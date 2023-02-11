@@ -3,16 +3,22 @@ import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, 
 import Task from './components/Task';
 
 export default function App() {
+  {/*create states for task components and the current tasks in an array*/}
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
-
+  
+  {/*Function that is called upon hitting the (+) Button*/}
   const handleAddTask = () => {
     Keyboard.dismiss();
+    {/*Takes current array of tasks, adds new task*/}
     setTaskItems([...taskItems, task])
+    {/*Clears input field*/}
     setTask("");
   }
-
+  {/*Function called upon clicking a Task component*/}
+  {/*Index passed in function to specify task in array*/}
   const completeTask = (index) => {
+    {/*Create copy of taskItems, splices, then sets task items to that copy*/}
     let itemsCopy = [...taskItems];
     itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
